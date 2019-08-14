@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            user-details
+        </title>
+        <link rel="stylesheet " href="D:\Training\html\bootstrap\css\bootstrap.css">
+        <link rel="stylesheet " href="D:\Training\html\bootstrap\css\bootstrap-responsive.css">
+        <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <style>
+           body{
+              border:15px solid black;
+              margin-left:30%;
+              margin-right:30%;
+              background-color:lavender;
+              margin-top:7%;
+             
+           }
+           .table{
+              
+            width:500px;
+              height:400px;
+           }
+           .color{
+            background-color:lightblue;
+           }
+           input[type=text]
+           {
+               width:50%;
+               height:80%;
+           }
+           input[type=email]
+           {
+               width:50%;
+               height:80%;
+           }
+           input[type=button]
+           {
+            height:80%;   
+            width:40%;
+               
+           }
+           
+        </style>
+        <script>
+        
+    var fname1=document.getElementById('fname');
+    var lname1=document.getElementById('lname');
+    var email1=document.getElementById('email');
+
+    $('document').ready(function(){
+      $('.submit').click(function(){
+          var list={
+          
+        };
+        $.ajax({
+        url: "https://reqres.in/api/users",
+        type: 'POST',
+        data :
+        {
+            first_name:fname1,
+            last_name:lname1,
+            email: email1
+        },
+        success: function(response)
+        {
+        console.log(response);
+        }
+       });
+    });
+   });
+        </script>
+    </head>
+    <body>
+        <div class="color">
+        <center><h2>User Details</h2></center>
+        <form name="form" method="post">
+            <table class="table">
+                <center>
+                <tr>
+                    <td>
+                            <b>First Name</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                            <input id="fname" type="text" name="first-name" placeholder="John"/>
+                    </td>
+                </tr>
+              
+                <tr>
+                    <td>
+                       <b> Last Name</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input id="lname" type="text" name="last-name" placeholder="Doe"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <b>Email</b>
+                    </td>
+                </tr>
+                    <tr>
+                        <td>
+                            <input id="email" type="email" name="email" placeholder="ÿou@domain.com"/>
+                        </td>
+                    </tr>       
+                    <tr>
+                        <td class="submit">
+                        <center>  <input  class="btn btn-primary" type="button" value="submit"/></center>
+                        </td>
+                    </tr> 
+                </center>          
+            </table>
+        </form>
+    </div>
+    </body>
+</html>
